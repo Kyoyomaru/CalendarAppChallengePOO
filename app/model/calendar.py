@@ -27,7 +27,7 @@ class Event:
     end_at:time
     reminders:list[Reminder]
    id: str= generate_unique_id()
-   def add_reminder (self, reminder: Reminder) -> None:
+   def add_reminder (self,date_time:datetime,type:str) -> None:
        reminder=Reminder(date_time,type)
        self.reminders.append(reminder)
    def delete_reminder (self, reminder_index: str) -> None:
