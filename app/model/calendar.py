@@ -17,6 +17,7 @@ class Reminder:
     def __str__(self) -> str:
         return f"Reminder on {self.date_time} of type {self.type}"
 
+
 # TODO: Implement Event class here
 @dataclass()
 class Event:
