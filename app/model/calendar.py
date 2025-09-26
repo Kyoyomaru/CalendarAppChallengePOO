@@ -4,8 +4,7 @@ from typing import ClassVar
 
 from app.services.util import generate_unique_id, date_lower_than_today_error, event_not_found_error, \
     reminder_not_found_error, slot_not_available_error
-
-
+#el commit aparece hechi por otra persona pero el codigo es mio
 # TODO: Implement Reminder class here
 @dataclass()
 class Reminder:
