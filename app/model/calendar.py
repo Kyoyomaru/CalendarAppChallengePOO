@@ -28,28 +28,29 @@ class Event:
     reminders:list[Reminder]=field(default_factory=list,init=False)
     id: str= field(default_factory=generate_unique_id)
     def add_reminder (self,date_time:datetime,type:str =Reminder.EMAIL):
-       new_reminder=Reminder(date_time=datetime,type=type)
-        self.reminders.append(new_reminder)
+            new_reminder=Reminder(date_time=date_time,type=type)
+ #Recordar indentar bien
+            self.reminders.append(new_reminder)
     def delete_reminder (self, reminder_index: int):
        if 0 <= reminder_index < len(self.reminders):
            del self.reminders[reminder_index]
        else:
-           reminder_not_found_error()
+            reminder_not_found_error()
 
 
-    def _str_(self) -> str:
+def __str__ (self) -> str:
         return (
         f"ID: {self.id}\n"
         f"Event title: {self.title}\n"
         f"Description: {self.description}\n"
         f"Time: ({self.start_at}) - ({self.end_at})"
-    )
+        )
 # TODO: Implement Day class here
 class Day:
 #el date_ inicia con un parametro en el constructor obligatoriamente
     def __init__(self, date_:date):
         self.date_ = date_
-        pass
+    pass
 
 
 # TODO: Implement Calendar class here
