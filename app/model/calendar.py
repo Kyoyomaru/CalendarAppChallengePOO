@@ -50,7 +50,18 @@ class Day:
 #el date_ inicia con un parametro en el constructor obligatoriamente
     def __init__(self, date_:date):
         self.date_ = date_
+        self.slots={}
+        self._init_slots()
+    def _init_slots(self):
+        for hour in range(24):
+            for minute in range(0,60,15):
+                slot_time =time(hour,minute)
+            self.slots[slot_time.hour]=None #none es igual a disponible
+    def add_event(self,event_id:str,start_at:time,end_at:time):
     pass
+
+
+
 
 
 # TODO: Implement Calendar class here
