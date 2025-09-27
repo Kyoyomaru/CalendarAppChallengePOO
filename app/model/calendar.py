@@ -36,16 +36,14 @@ class Event:
        else:
            reminder_not_found_error()
 
-    def __str__(self) -> str:
+
+    def _str_(self) -> str:
         return (
-            f"ID: {self.id}\n"
-            f"Event title: {self.title}\n"
-            f"Event Description: {self.description}\n"
-            f"Time: {self.start_at - self.end.start}\n"
-            )
-
-
-
+        f"ID: {self.id}\n"
+        f"Event title: {self.title}\n"
+        f"Description: {self.description}\n"
+        f"Time: ({self.start_at}) - ({self.end_at})"
+    )
 # TODO: Implement Day class here
 class Day:
 #el date_ inicia con un parametro en el constructor obligatoriamente
