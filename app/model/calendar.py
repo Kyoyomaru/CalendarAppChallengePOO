@@ -118,7 +118,8 @@ class Calendar:
             event_not_found_error()
         event = self.events[event_id]
         event.add_reminder(date_time, type_)
-
+# El metodo find_available_slots recibe un parámetro date_ de tipo date y retorna una lista
+ #de objetos de tipo time. Un espacio disponible es un objeto de la clase time que no tiene
     def find_available_slots(self, date_: date) -> list[time]:
         if date_ not in self.days:
             return [time(h, m) for h in range(24) for m in range(0, 60, 15)]
