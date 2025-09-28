@@ -46,55 +46,49 @@ def __str__ (self) -> str:
         f"Time: ({self.start_at}) - ({self.end_at})"
         )
 # TODO: Implement Day class here
+
 class Day:
-#el date_ inicia con un parametro en el constructor obligatoriamente
-    def __init__(self, date_:date):
+    def __init__(self, date_: date):
         self.date_ = date_
-        self.slots:Dict[time, Optional[str]] = {}
+        self.slots: Dict[time, Optional[str]] = {}
         self._init_slots()
 
     def _init_slots(self):
         for hour in range(24):
-            for minute in range(0,60,15):
-                slot_time =time(hour,minute)
-            self.slots[slot_time.hour]=None #none es igual a disponible
-    def add_event(self,event_id:str,start_at:time,end_at:time):
+            for minute in range(0, 60, 15):
+                slot_time = time(hour, minute)
+                self.slots[slot_time] = None
+
+    def add_event(self, event_id: str, start_at: time, end_at: time):
         slots_to_book = []
         for slot_time in self.slots:
             if start_at <= slot_time < end_at:
-             if self.slots[slot_time] is not None:
-                slot_not_available_error()
-            slots_to_book.append(slot_time)
+                if self.slots[slot_time] is not None:
+                    slot_not_available_error()
+                slots_to_book.append(slot_time)
+
         for slot_time in slots_to_book:
-            self.slots[slot_time]=event_id
-def delete_event(self, event_id: str):
-    deleted = False
-    for slot, saved_id in self.slots.items():
-        if saved_id == event_id:
-            self.slots[slot] = None
-            deleted = True
-    if not deleted:
-        event_not_found_error()
-def update_event(self, event_id: str, start_at: time, end_at: time):
-    for slot in self.slots:
-        if self.slots[slot] == event_id:
-            self.slots[slot] = None
-    for slot in self.slots:
-        if start_at <= slot < end_at:
-            if self.slots[slot]:
-                slot_not_available_error()
-    else:
-                self.slots[slot] = event_id
-# TODO: Implement Calendar class here
+            self.slots[slot_time] = event_id
+
+    def delete_event(self, event_id: str):
+        deleted = False
+        for slot, saved_id in self.slots.items():
+            if saved_id == event_id:
+                self.slots[slot] = None
+                deleted = True
+        if not deleted:
+            event_not_found_error()
+
+    def update_event(self, event_id: str, start_at: time, end_at: time):
+        for slot in self.slots:
+            if self.slots[slot] == event_id:
+                self.slots[slot] = None
+        for slot in self.slots:
+            if start_at <= slot < end_at:
+                if self.slots[slot]:
+                    slot_not_available_error()
+                else:
+                    self.slots[slot] = event_id
+
 class Calendar:
-    def __init__(self):
-        self.days: dict[date, Day] = {}
-        self.events: dict[date, Event] = {}
-    def add_event(self, title:str, description:str,date_:date,start_at:time,end_at:time):
-      if date_<date.now():
-          date_lower_than_today_error()
-      if date_ not in self.days:
-          self.days[date_] = Day(date_)
-          new_event = Event(title, description, date_, start_at, end_at)
-          self.days[date_].add_event(new_event)
 
