@@ -85,19 +85,11 @@ def update_event(self, event_id: str, start_at: time, end_at: time):
                 slot_not_available_error()
     else:
                 self.slots[slot] = event_id
-
-
-
-
-
-
-
-
-
 # TODO: Implement Calendar class here
 class Calendar:
-    days: dict[date, Day]
-    events: dict[str, Event]
+    def __init__(self):
+        self.days: dict[date, Day] = {}
+        self.events: dict[date, Event] = {}
     def add_event(self, title:str, description:str,date_:date,start_at:time,end_at:time):
       if date_<date.now():
           date_lower_than_today_error()
