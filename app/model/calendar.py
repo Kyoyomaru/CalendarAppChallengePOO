@@ -90,5 +90,4 @@ class Day:
                 else:
                     self.slots[slot] = event_id
 
-class Calendar:
-
+class Calendar
